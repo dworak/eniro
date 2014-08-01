@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eniro.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="eaj-9P-FCE">
+                                <rect key="frame" x="12" y="446" width="296" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="102" id="e2O-Hk-udl"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NTV-Bh-lB1">
+                                <rect key="frame" x="0.0" y="20" width="320" height="418"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eaj-9P-FCE" secondAttribute="bottom" constant="20" symbolic="YES" id="Eo0-M5-5jm"/>
+                            <constraint firstItem="eaj-9P-FCE" firstAttribute="top" secondItem="NTV-Bh-lB1" secondAttribute="bottom" constant="8" symbolic="YES" id="HT3-bO-lgp"/>
+                            <constraint firstItem="eaj-9P-FCE" firstAttribute="centerX" secondItem="NTV-Bh-lB1" secondAttribute="centerX" id="N2k-GT-prm"/>
+                            <constraint firstItem="NTV-Bh-lB1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" symbolic="YES" id="V1L-Ge-HaB"/>
+                            <constraint firstItem="eaj-9P-FCE" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="12" id="Vxf-3v-edu"/>
+                            <constraint firstAttribute="trailing" secondItem="NTV-Bh-lB1" secondAttribute="trailing" id="pFW-88-Wac"/>
+                            <constraint firstItem="NTV-Bh-lB1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ynB-YB-u4u"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aTableView" destination="NTV-Bh-lB1" id="oyb-7w-qDA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130" y="-102"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="eniro.jpg" width="472" height="164"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
