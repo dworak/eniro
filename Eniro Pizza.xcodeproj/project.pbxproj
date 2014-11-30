@@ -39,6 +39,8 @@
 		FB12F13E1A2BBD1E0026155E /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FB12F1341A2BBD1E0026155E /* JSONValueTransformer.m */; };
 		FB12F1421A2BBDB90026155E /* LDAdvertWS.m in Sources */ = {isa = PBXBuildFile; fileRef = FB12F1411A2BBDB90026155E /* LDAdvertWS.m */; };
 		FB12F1461A2BCF480026155E /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB12F1451A2BCF480026155E /* NSArray+Extensions.m */; };
+		FB12F1481A2BD5F00026155E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB12F1471A2BD5F00026155E /* MapKit.framework */; };
+		FB97FA591A2BD6840078C25E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB97FA581A2BD6840078C25E /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,8 @@
 		FB12F1411A2BBDB90026155E /* LDAdvertWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDAdvertWS.m; sourceTree = "<group>"; };
 		FB12F1441A2BCF480026155E /* NSArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extensions.h"; sourceTree = "<group>"; };
 		FB12F1451A2BCF480026155E /* NSArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extensions.m"; sourceTree = "<group>"; };
+		FB12F1471A2BD5F00026155E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FB97FA581A2BD6840078C25E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB97FA591A2BD6840078C25E /* CoreLocation.framework in Frameworks */,
+				FB12F1481A2BD5F00026155E /* MapKit.framework in Frameworks */,
 				9EAF4F8119866F3B001E5505 /* CoreGraphics.framework in Frameworks */,
 				9EAF4F8319866F3B001E5505 /* UIKit.framework in Frameworks */,
 				9EAF4F7F19866F3B001E5505 /* Foundation.framework in Frameworks */,
@@ -140,6 +146,8 @@
 		9EAF4F7D19866F3B001E5505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB97FA581A2BD6840078C25E /* CoreLocation.framework */,
+				FB12F1471A2BD5F00026155E /* MapKit.framework */,
 				9EAF4F7E19866F3B001E5505 /* Foundation.framework */,
 				9EAF4F8019866F3B001E5505 /* CoreGraphics.framework */,
 				9EAF4F8219866F3B001E5505 /* UIKit.framework */,

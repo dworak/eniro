@@ -10,9 +10,13 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "LDAdvertWS.h"
 
-@interface ViewController ()
+#import <MapKit/MapKit.h>
+
+@interface ViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *fetchedAdverts;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *lastLocation;
 
 @end
 
@@ -28,7 +32,7 @@
     self.aTableView.dataSource = self;
     self.aTableView.backgroundColor = [UIColor clearColor];
     
-    [self loadData];
+    [self checkForGPS];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,8 +81,8 @@
     operationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     operationManager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString *latitude = @"59.37264";
-    NSString *longitude = @"18.01658";
+    NSString *latitude = [NSString stringWithFormat:@"%f",_lastLocation.coordinate.latitude];
+    NSString *longitude = [NSString stringWithFormat:@"%f",_lastLocation.coordinate.longitude];
     NSString *key = @"6401495041230735255";
     NSString *profile = @"dworak";
     NSString *search_word = @"pizza";
@@ -120,7 +124,68 @@
     }];
 }
 
+#pragma mark Location -
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    if (!self.lastLocation)
+    {
+        self.lastLocation = newLocation;
+    }
+    
+    if (newLocation.coordinate.latitude != self.lastLocation.coordinate.latitude &&
+        newLocation.coordinate.longitude != self.lastLocation.coordinate.longitude)
+    {
+        self.lastLocation = newLocation;
+        NSLog(@"[LOG] New location: %f, %f",
+              self.lastLocation.coordinate.latitude,
+              self.lastLocation.coordinate.longitude);
+        
+        [[self locationManager] stopUpdatingLocation];
+        [self loadData];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    // Handle error
+}
+
 #pragma mark Private - 
+
+- (void)checkForGPS
+{
+    // If location services are disabled by user, show special information.
+    if ([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
+    {
+       NSLog(@"[ERROR] No access to GPS");
+    }
+    else
+    {
+        [self turnOnLocationServices];
+    }
+}
+
+- (void)turnOnLocationServices
+{
+    [[self locationManager] requestWhenInUseAuthorization];
+    [[self locationManager] startUpdatingLocation];
+}
+
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager)
+    {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.distanceFilter = kCLDistanceFilterNone; //Whenever we move
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self;
+    }
+    
+    return _locationManager;
+}
 
 - (NSMutableArray *)fetchedAdverts
 {
