@@ -33,6 +33,7 @@
     self.aTableView.backgroundColor = [UIColor clearColor];
     
     [self checkForGPS];
+    [self turnOnLocationServices];
 }
 
 - (void)didReceiveMemoryWarning
@@ -142,8 +143,7 @@
         NSLog(@"[LOG] New location: %f, %f",
               self.lastLocation.coordinate.latitude,
               self.lastLocation.coordinate.longitude);
-        
-        [[self locationManager] stopUpdatingLocation];
+
         [self loadData];
     }
 }
@@ -161,10 +161,6 @@
     if ([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied)
     {
        NSLog(@"[ERROR] No access to GPS");
-    }
-    else
-    {
-        [self turnOnLocationServices];
     }
 }
 
